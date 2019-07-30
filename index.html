@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1>Crystal Collector</h1>
+    <p>The goal of this game, is to click the 4 buttons below. Each button is set to a random number, in which you will have to figure out each set amount. Once you have clicked a button the number for that button will be the same.
+        you have a total of your score, which is the lowest number you see on the screen. There is a number which is randomly generated and is displayed next to the word "Goal". if the total number of score eauals the goals number, you win and your wins go up by one. However, if you go over the number, you lose. In which you will see the lose section go up by one. Once your number equals or proceeds the goal number, the game will reset, with new buttons and a new goal to work towards. 
+        Goodluck!
+    </p>
+    <div id="endGoal">
+        <p> goal:</p>
+    </div>
+    <div class="scoreLog">
+        <div id="win">
+            <p> Wins:</p>
+        </div>
+        <div id="lose">
+            <p> Losses:</p>
+        </div>
+    </div>
+    <div class="button">
+        <button id="btn1">one</button>
+        <button id="btn2">two</button>
+        <button id="btn3">three</button>
+        <button id="btn4">four</button>
+    </div>
+    <div id="accumulator">
+        <p> your score:</p>
+    </div>
+
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
+    <script>
+
+
+        // buttons 1,2,3,4 need to reset
+        var button1 = 0;
+        // var button1 = Math.floor((Math.random() * 12) + 1);
+        var button2 = 0
+        var button3 = 0
+        var button4 = 0
+        var endGoal = 0
+
+        // reset accumulator back to 0
+        var accumulator = 0
+
+        var showAccumulator = accumulator
+        var win = ["you win"]
+        var lose = ["you lose"]
+        var wins = 0
+        var losses = 0
+        // endgoal get reset
+        // var showEndGoal = endGoal
+
+
+        function resetGame() {
+            button1 = Math.floor((Math.random() * 12) + 1);
+            button2 = Math.floor((Math.random() * 12) + 1);
+            button3 = Math.floor((Math.random() * 12) + 1);
+            button4 = Math.floor((Math.random() * 12) + 1);
+            endGoal = Math.floor((Math.random() * 120) + 18);
+            accumulator = 0
+            $("#endGoal").text("goal:" + endGoal)
+
+            // $("#accumulator").text("your score:" + accumulator);
+            
+            console.log('restGame function is working')
+        }
+resetGame()
+
+console.log("endgoal", endGoal)
+
+        $("#btn1").on('click', function () {
+            accumulator = accumulator + button1;
+            $("#accumulator").text("your score:" + accumulator);
+            console.log(accumulator)
+            button()
+        })
+        $("#btn2").click(function () {
+            accumulator = accumulator + button2;
+            $("#accumulator").text("your score:" + accumulator);
+            console.log(accumulator)
+            button()
+
+        })
+        $("#btn3").click(function () {
+            accumulator = accumulator + button3;
+            $("#accumulator").text("your score:" + accumulator);
+            console.log(accumulator)
+            button()
+
+        })
+        $("#btn4").click(function () {
+            accumulator = accumulator + button4;
+            $("#accumulator").text("your score:" + accumulator);
+            console.log(accumulator)
+            button()
+        })
+           
+        $("#win").text(wins)
+        $("#lose").text(losses)
+        // $("#scoreLog").(function () {
+        function button() {
+            if (accumulator === endGoal) {
+                wins++;
+                $("#win").text(wins)
+                resetGame()
+                console.log('wins:', wins)
+            }
+
+            else if (accumulator > endGoal) {
+                losses++;
+                $("#lose").text(losses)
+                console.log('losses: ', losses)
+                resetGame()
+            } else {
+                console.log('losses: ', losses)
+            }
+        }
+
+
+
+    </script>
+</body>
+
+</html>
