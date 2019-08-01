@@ -11,8 +11,13 @@
 
 <body>
     <h1>Crystal Collector</h1>
-    <p>The goal of this game, is to click the 4 buttons below. Each button is set to a random number, in which you will have to figure out each set amount. Once you have clicked a button the number for that button will be the same.
-        you have a total of your score, which is the lowest number you see on the screen. There is a number which is randomly generated and is displayed next to the word "Goal". if the total number of score eauals the goals number, you win and your wins go up by one. However, if you go over the number, you lose. In which you will see the lose section go up by one. Once your number equals or proceeds the goal number, the game will reset, with new buttons and a new goal to work towards. 
+    <p>The goal of this game, is to click the 4 buttons below. Each button is set to a random number, in which you will
+        have to figure out each set amount. Once you have clicked a button the number for that button will be the same.
+        you have a total of your score, which is the lowest number you see on the screen. There is a number which is
+        randomly generated and is displayed next to the word "Goal". if the total number of score eauals the goals
+        number, you win and your wins go up by one. However, if you go over the number, you lose. In which you will see
+        the lose section go up by one. Once your number equals or proceeds the goal number, the game will reset, with
+        new buttons and a new goal to work towards.
         Goodluck!
     </p>
     <div id="endGoal">
@@ -40,20 +45,18 @@
     <script>
 
 
-        // buttons 1,2,3,4 need to reset
+        // buttons are set to 0 because it doesnt have a value yet
         var button1 = 0;
-        // var button1 = Math.floor((Math.random() * 12) + 1);
         var button2 = 0
         var button3 = 0
         var button4 = 0
+        // endgoal set to 0  because it doesnt have a value yet.
         var endGoal = 0
 
-        // reset accumulator back to 0
+        // accumulator set to 0 , no value yet
         var accumulator = 0
 
         var showAccumulator = accumulator
-        var win = ["you win"]
-        var lose = ["you lose"]
         var wins = 0
         var losses = 0
         // endgoal get reset
@@ -68,14 +71,15 @@
             endGoal = Math.floor((Math.random() * 120) + 18);
             accumulator = 0
             $("#endGoal").text("goal:" + endGoal)
+            $("#accumulator").text("your score:" + accumulator);
 
             // $("#accumulator").text("your score:" + accumulator);
-            
+
             console.log('restGame function is working')
         }
-resetGame()
+        resetGame()
 
-console.log("endgoal", endGoal)
+        console.log("endgoal", endGoal)
 
         $("#btn1").on('click', function () {
             accumulator = accumulator + button1;
@@ -103,21 +107,21 @@ console.log("endgoal", endGoal)
             console.log(accumulator)
             button()
         })
-           
+
         $("#win").text(wins)
         $("#lose").text(losses)
         // $("#scoreLog").(function () {
         function button() {
             if (accumulator === endGoal) {
                 wins++;
-                $("#win").text(wins)
+                $("#win").text("Win:" + wins)
                 resetGame()
                 console.log('wins:', wins)
             }
 
             else if (accumulator > endGoal) {
                 losses++;
-                $("#lose").text(losses)
+                $("#lose").text("Lose:" + losses)
                 console.log('losses: ', losses)
                 resetGame()
             } else {
