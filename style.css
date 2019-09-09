@@ -1,5 +1,21 @@
-body{
-    background-color: silver;
-    color: black;
+html{
+    background: url(https://wi-images.condecdn.net/image/nDzxeGbyew2/crop/1020/f/iStock-511215508.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+    
+}
+
+body > * {
+    background: rgba(0, 0, 0, 0.9);
+    color: white;
     width: 50%;
+}
+.button > img{
+    width: 200px;
+    height: 100px;
+    object-fit: cover;
+
+
 }
